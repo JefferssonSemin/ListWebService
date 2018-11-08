@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{tituloPagina}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-fab top right edge>
+    <button ion-fab mini (click)="AbreFormulario()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+  <div padding [hidden]="!abreForm">
+    <ion-item>
+      <ion-label color="primary" stacked>Titulo</ion-label>
+      <ion-input type="text" [(ngModel)]="nota.Title" placeholder="Titulo da nota"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Descricao</ion-label>
+      <ion-input type="text" [(ngModel)]="nota.Body"  placeholder="Descricao da nota"></ion-input>
+    </ion-item>
+    <p>
+      <button ion-button color="primary" (click)="adicionaNota()" block>Salvar</button>
+    </p>
+  </div>
+  <ion-list [hidden]="abreForm">
+   <ion-item-sliding *ngFor="let item of listaNotas">
+      <button ion-item>
+        <h2>{{item.tituloPagina}}</h2>
+        <p>{{item.Descricao}}</p>
+      </button>
+      <ion-item-options side="right">
+        <button ion-button name="create" color="green" >Editar</button>
+        <button ion-button name ="trash" color="danger" >Deletar</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
