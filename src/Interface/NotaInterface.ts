@@ -1,5 +1,5 @@
 interface NotaInterface{
-    Id?: number;
-    Title: string;
-    Body: string;
+    id?: number;
+    title: string;
+    body: string;
 }

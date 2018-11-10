@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
 import { WebserviceProvider } from "../../providers/webservice/webservice";
 
-
 @Component({
     templateUrl: 'notas.html'
 })
@@ -11,18 +10,18 @@ export class NotasPage {
 
     public abreForm: boolean = false;
     public tituloPagina: string = "Notas";
-    public nota: NotaInterface = { Title: '', Body: '' }
+    public nota: NotaInterface = { title: '', body: '' }
     public listaNotas: NotaInterface[];
 
     constructor(public navCtrl: NavController, public webService: WebserviceProvider) {
-
-
     }
 
     ionViewDidEnter() {
-        console.log('ionViewDidEnter');
-        this.webService.getNotas().then(a => this.listaNotas = a);
-        
+        this.webService.getNotas().subscribe(
+            (data: NotaInterface[]) => {
+                this.listaNotas = data;
+            }
+        );
     }
 
     AbreFormulario() {
@@ -34,13 +33,13 @@ export class NotasPage {
         }
     }
 
-    // adicionaNota() {
-    //     console.log(this.nota);
-    //     let nota = this.nota;
-    //     this.nota =  {Title: '', Body: '' }
-    //     this.abreForm = false;
-    //     this.webService.addNota(this.nota).then(data => console.log(data));
-    //     this.webService.addNota(this.nota).then(data =>  this.listaNotas.push(data));
-       
-    // }
+    adicionaNota() {
+        this.webService.addNota(this.nota).subscribe(
+            (data: NotaInterface[]) => {
+                this.listaNotas = data
+                console.log(data);
+            }
+        );
+    }
 }
+

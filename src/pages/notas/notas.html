@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-fab top right edge>
+  <ion-fab bottom right>
     <button ion-fab mini (click)="AbreFormulario()">
       <ion-icon name="add"></ion-icon>
     </button>
@@ -12,11 +12,11 @@
   <div padding [hidden]="!abreForm">
     <ion-item>
       <ion-label color="primary" stacked>Titulo</ion-label>
-      <ion-input type="text" [(ngModel)]="nota.Title" placeholder="Titulo da nota"></ion-input>
+      <ion-input type="text" [(ngModel)]="nota.title" placeholder="Titulo da nota"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary" stacked>Descricao</ion-label>
-      <ion-input type="text" [(ngModel)]="nota.Body"  placeholder="Descricao da nota"></ion-input>
+      <ion-input type="text" [(ngModel)]="nota.body"  placeholder="Descricao da nota"></ion-input>
     </ion-item>
     <p>
       <button ion-button color="primary" (click)="adicionaNota()" block>Salvar</button>
@@ -25,8 +25,8 @@
   <ion-list [hidden]="abreForm">
    <ion-item-sliding *ngFor="let item of listaNotas">
       <button ion-item>
-        <h2>{{item.tituloPagina}}</h2>
-        <p>{{item.Descricao}}</p>
+        <h2>{{item.title}}</h2>
+        <p>{{item.body}}</p>
       </button>
       <ion-item-options side="right">
         <button ion-button name="create" color="green" >Editar</button>

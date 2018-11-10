@@ -15,17 +15,12 @@ export class WebserviceProvider {
   constructor(public http: HttpClient) {
 
   }
-
-
-
+  
   addNota(nota: NotaInterface) {
-    const a = this.http.post(this.url + 'api/notes/', { Headers: this.headers })
-      .toPromise();
-    return a.constructor().json;
-
+    return this.http.post(this.url + 'api/notes/', { Headers: this.headers });
   }
+
   getNotas() {
-    return this.http.get(this.url + 'api/notes')
-      .toPromise();
+    return this.http.get(this.url + 'api/notes');
   }
 }
