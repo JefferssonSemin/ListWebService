@@ -16,21 +16,23 @@
     </ion-item>
     <ion-item>
       <ion-label color="primary" stacked>Descricao</ion-label>
-      <ion-input type="text" [(ngModel)]="nota.body"  placeholder="Descricao da nota"></ion-input>
+      <ion-input type="text" [(ngModel)]="nota.body" placeholder="Descricao da nota"></ion-input>
     </ion-item>
     <p>
-      <button ion-button color="primary" (click)="adicionaNota()" block>Salvar</button>
+      <button [hidden]="editando" ion-button color="primary" (click)="adicionaNota()" block>Adicionar</button>
+      <button [hidden]="!editando" ion-button color="primary" (click)="editarNota()" block>Salvar</button>
+
     </p>
   </div>
   <ion-list [hidden]="abreForm">
-   <ion-item-sliding *ngFor="let item of listaNotas">
-      <button ion-item>
+    <ion-item-sliding #listaopcoes *ngFor="let item of listaNotas">
+      <button ion-item="" (click)="abreDetalhe(item)">
         <h2>{{item.title}}</h2>
         <p>{{item.body}}</p>
       </button>
       <ion-item-options side="right">
-        <button ion-button name="create" color="green" >Editar</button>
-        <button ion-button name ="trash" color="danger" >Deletar</button>
+        <button ion-button name="create" color="green" (click)="abreEditarNota(item, listaopcoes)">Editar</button>
+        <button ion-button name="trash" color="danger" (click)="deletarNota(item, listaopcoes)">Deletar</button>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
