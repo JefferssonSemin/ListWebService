@@ -11,6 +11,8 @@ import { Injectable } from '@angular/core';
 export class WebserviceProvider {
 
   private url: string = 'http://www.deveup.com.br/notas/';
+  private urlPrevisao: string = 'http://api.openweathermap.org/data/2.5/weather?q=';
+  private urlPrevisaoFim: string ='&APPID=0d7254a5353735416a0277bb6ee6c19b&units=metric&lang=pt';
   private headers : HttpHeaders;
   constructor(public http: HttpClient) {
 
@@ -63,5 +65,8 @@ export class WebserviceProvider {
             console.log(error.text());
           });
     });
+  }
+  getPrevisao(cidade: string){
+    return this.http.get(this.urlPrevisao+cidade+this.urlPrevisaoFim);
   }
 }

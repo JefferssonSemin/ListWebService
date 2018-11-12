@@ -14,12 +14,20 @@
 
 
 <ion-content padding>
-    <ion-card>
-        <ion-card-header>
-          Titulo da previsao
-        </ion-card-header>
-        <ion-card-content>
-          Descricao da previsao
-        </ion-card-content>
-      </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Titulo da previsao
+    </ion-card-header>
+    <ion-card-content>
+      Descricao da previsao
+    </ion-card-content>
+  </ion-card>
+  <ion-item>
+    <ion-label color="primary" stacked>Titulo</ion-label>
+    <ion-input type="text" [(ngModel)]="cidade" placeholder="Digite o nome da cidade"></ion-input>
+  </ion-item>
+  <p>
+    <button ion-button="" color="primary" (click)="buscaPrevisao()" block="">Buscar</button>
+    <button ion-button="" color="light" (click)="salvaNota()" block="">Salvar como Nota</button>
+  </p>
 </ion-content>
