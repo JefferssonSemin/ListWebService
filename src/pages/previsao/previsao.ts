@@ -27,14 +27,13 @@ export class PrevisaoPage {
   }
 
   buscaPrevisao() {
-    this.webService.getPrevisao(this.cidade).subscribe((data: NotaInterface[]) => {
-      //this.cidade = '';
-      // this.notaPrevisao.title = 'Previsão em' + data.push(name)
-      // this.notaPrevisao.body = 'Temperatura em ' + data.push()
+    this.webService.getPrevisao(this.cidade).subscribe((data: PrevisaoInterface) => {
+      this.cidade = '';
+      this.notaPrevisao.title = 'Previsão do tempo em ' + data.name
+      this.notaPrevisao.body = 'Temperatura ' + data.main.temp.toString() + ' graus e '+ data.weather[0].description+'. Em '+this.getData();
       console.log(data);
     })
   }
-
   getData() {
     let data: any = new Date();
     let dd: any = data.getDate();
@@ -51,6 +50,6 @@ export class PrevisaoPage {
   }
 
   salvaNota() {
-    this.navCtrl.push(NotasPage, {nota: this.notaPrevisao});
+    this.navCtrl.push(NotasPage, { nota: this.notaPrevisao });
   }
 }

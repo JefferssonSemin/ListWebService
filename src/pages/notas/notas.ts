@@ -42,7 +42,8 @@ export class NotasPage {
     }
 
     adicionaNota() {
-        this.webService.addNota(this.nota).then(data => console.log(data));
+        console.log(this.nota);
+        this.webService.addNota(this.nota).subscribe(data => console.log(data));
     }
 
     abreDetalhe(nota: NotaInterface) {
@@ -71,7 +72,10 @@ export class NotasPage {
 
     deletarNota(nota: NotaInterface, listaopcoes: ItemSliding) {
         listaopcoes.close();
-        //this.webService.deleteNota(nota).then(data => this.RemoveNota(data));
+        this.webService.deleteNota(nota).subscribe(
+            data => console.log(data),
+            error => console.log(error)
+            )
 
     }
 

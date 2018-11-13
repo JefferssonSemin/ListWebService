@@ -19,18 +19,7 @@ export class WebserviceProvider {
   }
 
   addNota(nota: NotaInterface) {
-    return new Promise(resolve => {
-      this.http.post(this.url + 'api/notes/' + nota.id, nota ,{headers: this.headers})
-        .subscribe(
-          response => {
-            console.log(nota);
-          },
-          error => {
-            //Failed to Login.
-            alert(error.text());
-            console.log(error.text());
-          });
-    });
+    return this.http.post(this.url+'api/notes',nota,{headers:this.headers})
   }
 
   getNotas() {
@@ -53,18 +42,7 @@ export class WebserviceProvider {
   }
 
   deleteNota(nota: NotaInterface){
-    return new Promise(resolve => {
-      this.http.delete(this.url + 'api/notes/' + nota.id, {headers: this.headers})
-        .subscribe(
-          response => {
-            console.log(response);
-          },
-          error => {
-            //Failed to Login.
-            alert(error.text());
-            console.log(error.text());
-          });
-    });
+   return this.http.delete(this.url + 'api/notes/' + nota.id, {headers: this.headers});
   }
   getPrevisao(cidade: string){
     return this.http.get(this.urlPrevisao+cidade+this.urlPrevisaoFim);
