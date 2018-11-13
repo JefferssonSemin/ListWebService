@@ -27,22 +27,11 @@ export class WebserviceProvider {
   }
 
   editNota(nota: NotaInterface) {
-    return new Promise(resolve => {
-      this.http.put(this.url + 'api/notes/' + nota.id, nota)
-        .subscribe(
-          response => {
-            console.log(response);
-          },
-          error => {
-            //Failed to Login.
-            alert(error.text());
-            console.log(error.text());
-          });
-    });
+    return this.http.put(this.url+'api/notes/'+nota.id,nota,{headers:this.headers})
   }
 
   deleteNota(nota: NotaInterface){
-   return this.http.delete(this.url + 'api/notes/' + nota.id, {headers: this.headers});
+   return this.http.delete(this.url + 'api/notes/' + nota.id,{headers: this.headers});
   }
   getPrevisao(cidade: string){
     return this.http.get(this.urlPrevisao+cidade+this.urlPrevisaoFim);

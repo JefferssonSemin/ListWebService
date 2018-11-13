@@ -30,6 +30,20 @@ export class NotasPage {
         }
     }
 
+    adicionaNota() {
+        this.webService.addNota(this.nota).subscribe(data => this.atualizaNota(this.nota));
+    }
+
+    editarNota() {
+        this.webService.editNota(this.nota).subscribe(data => this.atualizaNota(this.nota));
+    }
+
+    deletarNota(nota: NotaInterface, listaopcoes: ItemSliding) {
+        this.removeNota(nota);
+        listaopcoes.close();
+        this.webService.deleteNota(nota).subscribe(data => console.log(data));
+    }
+
     AbreFormulario() {
         this.abreForm = !this.abreForm;
         this.nota = { title: '', body: '' };
@@ -41,14 +55,8 @@ export class NotasPage {
         }
     }
 
-    adicionaNota() {
-        console.log(this.nota);
-        this.webService.addNota(this.nota).subscribe(data => console.log(data));
-    }
-
     abreDetalhe(nota: NotaInterface) {
-        this.navCtrl.push(DetalhesPage, { nota: nota });
-    }
+        this.navCtrl.push(DetalhesPage, { nota: nota });}
 
     abreEditarNota(nota: NotaInterface, listaopcoes: ItemSliding) {
         this.editando = true;
@@ -56,9 +64,6 @@ export class NotasPage {
         this.abreForm = true;
         this.tituloPagina = "Editar nota"
         this.nota = nota;
-    }
-    editarNota() {
-        //this.webService.editNota(this.nota).then(data=> this.atualizaNota(data));
     }
 
     atualizaNota(nota: NotaInterface) {
@@ -70,16 +75,7 @@ export class NotasPage {
         }
     }
 
-    deletarNota(nota: NotaInterface, listaopcoes: ItemSliding) {
-        listaopcoes.close();
-        this.webService.deleteNota(nota).subscribe(
-            data => console.log(data),
-            error => console.log(error)
-            )
-
-    }
-
-    RemoveNota(nota: NotaInterface) {
+    removeNota(nota: NotaInterface) {
         this.abreForm = false;
         for (let k in this.listaNotas) {
             if (this.listaNotas[k].id == nota.id) {
