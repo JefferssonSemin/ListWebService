@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { WebserviceProvider } from "../../providers/webservice/webservice";
-import { NotasPage } from '../notas/notas';
+import { RotasPage } from '../rotas/rotas';
 
 /**
  * Generated class for the PrevisaoPage page.
@@ -50,6 +50,6 @@ export class PrevisaoPage {
   }
 
   salvaNota() {
-    this.navCtrl.push(NotasPage, { nota: this.notaPrevisao });
+    this.navCtrl.push(RotasPage, { nota: this.notaPrevisao });
   }
 }

@@ -4,13 +4,13 @@ import { WebserviceProvider } from "../../providers/webservice/webservice";
 import { DetalhesPage } from "../detalhes/detalhes";
 
 @Component({
-    templateUrl: 'notas.html'
+    templateUrl: 'rotas.html'
 })
 
-export class NotasPage {
+export class RotasPage {
 
     public abreForm: boolean = false;
-    public tituloPagina: string = "Notas";
+    public tituloPagina: string = "Listagem de rotas";
     public nota: NotaInterface = { title: '', body: '' }
     public listaNotas: NotaInterface[];
     public editando: boolean = false;
