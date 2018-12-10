@@ -12,6 +12,7 @@ import { WebserviceProvider } from '../providers/webservice/webservice';
 import { DetalhesPage } from '../pages/detalhes/detalhes';
 import { PrevisaoPage } from '../pages/previsao/previsao';
 import { MapPage } from '../pages/map/map';
+import { BeginPage } from '../pages/begin/begin';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MapPage } from '../pages/map/map';
     RotasPage,
     DetalhesPage,
     MapPage,
-    TabsPage
+    TabsPage,
+    BeginPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { MapPage } from '../pages/map/map';
     RotasPage,
     DetalhesPage,
     TabsPage,
-    MapPage
+    MapPage,
+    BeginPage
   ],
   providers: [
     StatusBar,
@@ -43,4 +46,7 @@ import { MapPage } from '../pages/map/map';
     WebserviceProvider
   ]
 })
-export class AppModule {}
+
+export class AppModule {
+  rootPage:any = BeginPage;
+}
